@@ -1,0 +1,53 @@
+baseurl = "lailathais.github.io"
+languageCode = "en-us"
+title = "Laila Purim"
+publishDir = "docs"
+
+disableKinds = ["page", "section", "taxonomy", "taxonomyTerm", "RSS", "sitemap", "robotsTXT", "404"]
+
+[params]
+  favicon_ico = "favicon.ico"
+  favicon_ico_sizes = "16x16 32x32"
+  ogimage = "screenshot.jpg"
+  [params.personal]
+    avatar = "profile.jpg"
+    name = "Laila Purim"
+    subtitle = "Senior Global Talent Acquisition"
+    working = "Working on"
+    working_list = "Life, Talent, Consulting, Myself"
+    biography = "Administrator and constant world explorer."
+    cvcall = ""
+     scope = [
+        "[Projects](#)",
+        "[Other Projects](#)",
+      ]
+      
+  [[params.social]]
+    title = "LinkedIn"
+    icon = "fa-linkedin"
+    link = "https://www.linkedin.com/in/lailapurim"
+    target = "_blank"
+
+  [[params.social]]
+    title = "Instagram"
+    icon = "fa-instagram"
+    link = "https://www.instagram.com/laila.purina/"
+    target = "_blank"
+
+  [[params.social]]
+    title = "Facebook"
+    icon = "fa-facebook"
+    link = "https://www.facebook.com/laila.purim"
+    target = "_blank"
+
+  [params.footer]
+    copyright = "Laila Purim"
+
+  [params.license]
+    link = "https://creativecommons.org/licenses/by-sa/4.0/legalcode"
+    name = "CC-BY-SA-4.0"
+
+  [[params.credits]]
+    title = "HTML5UP"
+    text = "Designs based on"
+    link = "https://html5up.net"

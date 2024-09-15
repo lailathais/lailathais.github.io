@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+  {{ partial "header.html" . }}
+  <body class="is-loading">
+      <div id="wrapper">
+          <section id="main">
+            <header>
+              <span class="avatar"><img src="{{ .Site.Params.personal.avatar | printf "/images/%s" | relURL  }}" alt="avatar" height="130" width="130" ></span>
+              <h1 class="name">
+                {{ with .Site.Params.personal.name }}
+                  {{ . }}
+                {{ end }}
+              </h1>
+
+              {{ with .Site.Params.personal.subtitle }}
+                <h5 class="subtitle">{{ . | markdownify }}</h5>
+              {{ end }}
+
+              {{ with .Site.Params.personal.biography }}
+                <span class="biography">{{ . | markdownify }}</span>
+              {{ end }}
+              {{ with .Site.Params.personal.cvcall }}
+                <span class="biography">{{ . | markdownify }}</span>
+              {{ end }}
+
+              <h2 class="working">{{ .Site.Params.personal.working | markdownify }} <span class = "typed-text" data="{{ .Site.Params.personal.working_list }}"></span><span class="cursor typing">&nbsp</span></h2>
+
+              {{ with .Site.Params.personal.scope }}
+              <ul>
+                {{ range . }}
+                  <li>{{ . | markdownify }}</li>
+                {{ end }}
+              </ul>
+              {{ end }}
+            </header>
+
+            <footer>
+              <ul class="icons">
+                {{ range .Site.Params.social }}
+                  <li><a href="{{ .link }}" class="{{ .icon }}" target="{{ .target | default "_self" }}">{{ .title }}</a></li>
+                {{ end }}
+              </ul>
+              {{ if .Site.Params.contact.enable }}
+                {{ partial "contact.html" . }}
+              {{ end }}
+            </footer>
+          </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+          <ul class="copyright">
+            <li>&copy; 
+              {{ with .Site.Params.footer.copyright }}
+                {{ . }}
+              {{ else }}
+                {{ .Site.Params.author }}
+              {{ end }}</li>
+            <li>
+              {{ with .Site.Params.license }}
+                <a href="{{ .link }}">{{ .name }}</a>
+              {{ end }}</li>
+          </ul>
+          {{ with .Site.Params.credits }}
+            <ul class="credit copyright">
+              {{ range . }}
+                <li>{{ .text }} <a href="{{ .link }}">{{ .title }}</a></li>
+              {{ end }}
+            </ul>
+          {{ end }} 
+        
+        </footer>
+
+      </div>
+      <script>
+        if ('addEventListener' in window) {
+          window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+          document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        }
+      </script>
+      
+      {{ if .Site.Params.contact.enable }}
+        {{ "<!-- Form Validation -->" | safeHTML }}
+        <script src="{{ "assets/js/jquery-v3.3.1/jquery.min.js" | absURL }}"></script>
+        <script src="{{ "assets/js/bootstrap-v3.3.7/bootstrap.min.js" | absURL }}" async defer></script>
+        <script src="{{ "assets/js/jquery.form-validator-v2.3.44/jquery.form-validator.min.js" | absURL }}" async defer></script>
+        <script src="{{ "assets/js/contact.js" | absURL }}" async defer></script>
+      {{ end }}
+      
+      {{ template "_internal/google_analytics_async.html" . }}
+    
+    
+	    <script>
+        const typedTextSpan = document.querySelector(".typed-text");
+        const cursorSpan = document.querySelector(".cursor");
+        const textArray = typedTextSpan.getAttribute("data").split(",%20");
+        const typingDelay = 300;
+        const erasingDelay = 150;
+        const newTextDelay = 3000; // Delay between current and next text
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+          if (charIndex < textArray[textArrayIndex].length) {
+            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+          } 
+          else {
+            cursorSpan.classList.remove("typing");
+            setTimeout(erase, newTextDelay);
+          }
+        }
+
+        function erase() {
+          if (charIndex > 0) {
+            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+          } 
+          else {
+            cursorSpan.classList.remove("typing");
+            textArrayIndex++;
+            if(textArrayIndex>=textArray.length) textArrayIndex=0;
+            setTimeout(type, typingDelay + 1100);
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+          if(textArray.length) setTimeout(type, newTextDelay + 250);
+        });
+      </script>
+  </body>
+</html>
