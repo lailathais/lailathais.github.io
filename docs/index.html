@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <html prefix="og: https://ogp.me/ns/website#">
+<head>
+  <title>Laila Purim</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta property="og:title" content="Laila Purim" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="lailathais.github.io" />
+  
+  <meta property="og:image" content="/images/screenshot.jpg" />
+  
+  <meta name="generator" content="Hugo 0.118.2">
+  
+    <link rel="icon" href="/icons/favicon.ico" type="image/x-icon" sizes="16x16 32x32" />
+  
+  
+  
+  <link rel="apple-touch-icon-precomposed" href="/icons/%25!s%28%3cnil%3e%29" />
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+
+  
+    <link rel="stylesheet" href="/assets/css/page.css" />
+  
+
+  
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+  
+
+  
+
+  
+  
+  
+
+  <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+</head>
+
+  <body class="is-loading">
+      <div id="wrapper">
+          <section id="main">
+            <header>
+              <span class="avatar"><img src="/images/profile.jpg" alt="avatar" height="130" width="130" ></span>
+              <h1 class="name">
+                
+                  Laila Purim
+                
+              </h1>
+
+              
+                <h5 class="subtitle">Senior Global Talent Acquisition</h5>
+              
+
+              
+                <span class="biography">Administrator and constant world explorer.</span>
+              
+              
+
+              <h2 class="working">Working on <span class = "typed-text" data="Life,%20Talent,%20Consulting,%20Myself"></span><span class="cursor typing">&nbsp</span></h2>
+
+              
+              <ul>
+                
+                  <li><a href="#">Projects</a></li>
+                
+                  <li><a href="#">Other Projects</a></li>
+                
+              </ul>
+              
+            </header>
+
+            <footer>
+              <ul class="icons">
+                
+                  <li><a href="https://www.linkedin.com/in/lailapurim" class="fa-linkedin" target="_blank">LinkedIn</a></li>
+                
+                  <li><a href="https://www.instagram.com/laila.purina/" class="fa-instagram" target="_blank">Instagram</a></li>
+                
+                  <li><a href="https://www.facebook.com/laila.purim" class="fa-facebook" target="_blank">Facebook</a></li>
+                
+              </ul>
+              
+            </footer>
+          </section>
+
+        
+        <footer id="footer">
+          <ul class="copyright">
+            <li>&copy; 
+              
+                Laila Purim
+              </li>
+            <li>
+              
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">CC-BY-SA-4.0</a>
+              </li>
+          </ul>
+          
+            <ul class="credit copyright">
+              
+                <li>Designs based on <a href="https://html5up.net">HTML5UP</a></li>
+              
+            </ul>
+           
+        
+        </footer>
+
+      </div>
+      <script>
+        if ('addEventListener' in window) {
+          window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+          document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        }
+      </script>
+      
+      
+      
+      
+    
+    
+	    <script>
+        const typedTextSpan = document.querySelector(".typed-text");
+        const cursorSpan = document.querySelector(".cursor");
+        const textArray = typedTextSpan.getAttribute("data").split(",%20");
+        const typingDelay = 300;
+        const erasingDelay = 150;
+        const newTextDelay = 3000; 
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+          if (charIndex < textArray[textArrayIndex].length) {
+            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+          } 
+          else {
+            cursorSpan.classList.remove("typing");
+            setTimeout(erase, newTextDelay);
+          }
+        }
+
+        function erase() {
+          if (charIndex > 0) {
+            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+          } 
+          else {
+            cursorSpan.classList.remove("typing");
+            textArrayIndex++;
+            if(textArrayIndex>=textArray.length) textArrayIndex=0;
+            setTimeout(type, typingDelay + 1100);
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() { 
+          if(textArray.length) setTimeout(type, newTextDelay + 250);
+        });
+      </script>
+  </body>
+</html>
